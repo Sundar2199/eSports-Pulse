@@ -1,7 +1,8 @@
 import { useState , useEffect } from "react";
 import {getMatches} from "./services/matches.api.js";
 import { MatchCard } from "./components/MatchCard.jsx";
-
+import {Navbar} from "./components/Navbar/Navbar.jsx"
+import {Hero} from "./components/Hero/Hero.jsx"
 function App(){
   const [matches,setMatches] = useState([]);
   const [err,setErr] =  useState(null);
@@ -18,7 +19,7 @@ function App(){
     }
     catch(err){
 
-    setErr("Error connecting to server");
+    /*setErr("Error connecting to server");*/
   }}
 
   fetchMatches();
@@ -28,7 +29,8 @@ function App(){
 
   return (
     <div>
-      <h1>eSports-Pulse</h1>
+      <Navbar/>
+      <Hero/>
       {matches.map((match)=>{
         return(
           <MatchCard key = {match.id} match = {match}/>
